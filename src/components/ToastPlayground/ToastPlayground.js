@@ -17,8 +17,14 @@ function ToastPlayground() {
 
     const handlePopToast = (event) => {
         event.preventDefault();
+        if (!message) {
+            return;
+        }
+
         const id = crypto.randomUUID();
+
         setShelves((prev) => [...prev, { id, variant, message, onClose: () => handleCloseToast(id) }]);
+        
         setMessage('');
         setVariant(VARIANT_OPTIONS[0]);
     };
